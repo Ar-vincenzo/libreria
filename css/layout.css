@@ -1,0 +1,215 @@
+/* ─── HEADER ─────────────────────────────────────────── */
+header {
+  padding: 1.5rem var(--padding-x);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  position: sticky;
+  top: 0;
+  background: var(--bg);
+  z-index: 100;
+}
+
+.header-left h1 {
+  font-family: var(--font-display);
+  font-size: 1.5rem;
+  color: var(--gold);
+  letter-spacing: 0.01em;
+}
+
+.header-left p {
+  font-size: 0.7rem;
+  color: var(--text-ter);
+  margin-top: 0.15rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}
+
+.header-right {
+  display: flex;
+  gap: 0.6rem;
+  align-items: center;
+}
+
+/* ─── STATS BAR ───────────────────────────────────────── */
+.stats-bar {
+  display: flex;
+  gap: 2rem;
+  padding: 0.9rem var(--padding-x);
+  border-bottom: 1px solid var(--border);
+  background: var(--bg2);
+  flex-wrap: wrap;
+}
+
+.stat {
+  display: flex;
+  flex-direction: column;
+  gap: 0.1rem;
+}
+
+.stat-number {
+  font-family: var(--font-display);
+  font-size: 1.3rem;
+  color: var(--gold);
+  line-height: 1;
+}
+
+.stat-label {
+  font-size: 0.65rem;
+  color: var(--text-ter);
+  font-family: var(--font-mono);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+}
+
+/* ─── CONTROLS ────────────────────────────────────────── */
+.controls {
+  padding: 0.9rem var(--padding-x);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  gap: 0.75rem;
+  align-items: center;
+  flex-wrap: wrap;
+  background: var(--bg2);
+}
+
+.control-group {
+  display: flex;
+  gap: 0.35rem;
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.control-label {
+  font-family: var(--font-mono);
+  font-size: 0.65rem;
+  color: var(--text-ter);
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-right: 0.2rem;
+  white-space: nowrap;
+}
+
+.view-toggle {
+  display: flex;
+  gap: 0.3rem;
+  margin-left: auto;
+}
+
+/* ─── MAIN CONTENT ────────────────────────────────────── */
+.main {
+  padding: 1.5rem var(--padding-x);
+}
+
+/* ─── SECTION ─────────────────────────────────────────── */
+.shelf-section {
+  margin-bottom: 2.5rem;
+}
+
+.shelf-header {
+  display: flex;
+  align-items: center;
+  gap: 0.9rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  user-select: none;
+}
+
+.shelf-color-bar {
+  width: 4px;
+  height: 26px;
+  border-radius: 2px;
+  flex-shrink: 0;
+}
+
+.shelf-title {
+  font-family: var(--font-display);
+  font-size: 1.05rem;
+  color: var(--text);
+}
+
+.shelf-count {
+  font-family: var(--font-mono);
+  font-size: 0.68rem;
+  color: var(--text-ter);
+  background: var(--bg2);
+  padding: 0.18rem 0.45rem;
+  border: 1px solid var(--border);
+}
+
+.shelf-toggle {
+  margin-left: auto;
+  color: var(--text-ter);
+  font-size: 0.78rem;
+  transition: transform 0.2s;
+}
+
+.shelf-toggle.collapsed {
+  transform: rotate(-90deg);
+}
+
+/* ─── CONNECTIONS ─────────────────────────────────────── */
+.connections-view {
+  padding: 0.9rem 1.2rem;
+  border-top: 1px solid var(--border);
+  display: none;
+}
+
+.connections-view.show {
+  display: block;
+}
+
+.connections-title {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  color: var(--text-ter);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.65rem;
+}
+
+.connection-item {
+  display: flex;
+  align-items: center;
+  gap: 0.65rem;
+  padding: 0.4rem 0;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.connection-item:last-child {
+  border-bottom: none;
+}
+
+.connection-from,
+.connection-to {
+  color: var(--text-sec);
+}
+
+.connection-arrow {
+  color: var(--gold-dim);
+  flex-shrink: 0;
+}
+
+.connection-reason {
+  color: var(--text-ter);
+  font-size: 0.68rem;
+  font-style: italic;
+}
+
+.connections-footer {
+  padding: 0.5rem 1.2rem;
+  border-top: 1px solid var(--border);
+}
+
+/* ─── EMPTY STATE ─────────────────────────────────────── */
+.empty-shelf {
+  padding: 2rem;
+  text-align: center;
+  color: var(--text-ter);
+  font-size: 0.82rem;
+  font-family: var(--font-mono);
+  letter-spacing: 0.05em;
+}

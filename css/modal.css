@@ -1,0 +1,199 @@
+/* ─── MODAL OVERLAY ───────────────────────────────────── */
+.modal-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s;
+  backdrop-filter: blur(4px);
+}
+
+.modal-overlay.open {
+  opacity: 1;
+  pointer-events: all;
+}
+
+/* ─── MODAL ───────────────────────────────────────────── */
+.modal {
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  width: 480px;
+  max-width: 90vw;
+  max-height: 80vh;
+  overflow-y: auto;
+  transform: translateY(10px);
+  transition: transform 0.2s;
+}
+
+.modal-overlay.open .modal {
+  transform: translateY(0);
+}
+
+.modal-header {
+  padding: 1.3rem 1.4rem;
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  align-items: flex-start;
+  gap: 0.9rem;
+}
+
+.modal-color-bar {
+  width: 4px;
+  min-height: 56px;
+  border-radius: 2px;
+  flex-shrink: 0;
+  align-self: stretch;
+}
+
+.modal-header-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.modal-title {
+  font-family: var(--font-display);
+  font-size: 1.2rem;
+  color: var(--text);
+  line-height: 1.3;
+  margin-bottom: 0.25rem;
+}
+
+.modal-author {
+  font-size: 0.82rem;
+  color: var(--text-sec);
+}
+
+.modal-close {
+  background: transparent;
+  border: none;
+  color: var(--text-ter);
+  font-size: 1.1rem;
+  cursor: pointer;
+  padding: 0.15rem;
+  flex-shrink: 0;
+  transition: color 0.15s;
+  line-height: 1;
+}
+
+.modal-close:hover {
+  color: var(--text);
+}
+
+.modal-body {
+  padding: 1.3rem 1.4rem;
+}
+
+.modal-section {
+  margin-bottom: 1.1rem;
+}
+
+.modal-label {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  color: var(--text-ter);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.45rem;
+}
+
+.modal-footer {
+  padding: 0.9rem 1.4rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+/* ─── STATUS TOGGLE ───────────────────────────────────── */
+.status-toggle {
+  display: flex;
+  gap: 0.45rem;
+}
+
+.status-btn {
+  flex: 1;
+  padding: 0.45rem;
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-ter);
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.status-btn.active-read {
+  background: var(--green);
+  color: var(--bg);
+  border-color: var(--green);
+}
+
+.status-btn.active-unread {
+  background: var(--gold-faint);
+  color: var(--gold);
+  border-color: var(--gold);
+}
+
+/* ─── CONNECTIONS LIST ────────────────────────────────── */
+.connections-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+}
+
+/* ─── TEXTAREA ────────────────────────────────────────── */
+.modal-textarea {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.65rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  resize: vertical;
+  min-height: 75px;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.modal-textarea:focus {
+  border-color: var(--gold-dim);
+}
+
+.modal-textarea::placeholder {
+  color: var(--text-ter);
+}
+
+/* ─── DELETE BUTTON ───────────────────────────────────── */
+.delete-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-ter);
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: color 0.2s;
+  letter-spacing: 0.03em;
+}
+
+.delete-btn:hover {
+  color: var(--red);
+}
+
+/* ─── ADD MODAL ───────────────────────────────────────── */
+.add-modal {
+  width: 440px;
+}
+
+.add-modal-footer {
+  padding: 0.9rem 1.4rem;
+  border-top: 1px solid var(--border);
+  display: flex;
+  justify-content: flex-end;
+  gap: 0.45rem;
+}

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Libreria — Vincenzo Ariete</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=DM+Sans:wght@300;400;500&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/variables.css">
+  <link rel="stylesheet" href="css/base.css">
+  <link rel="stylesheet" href="css/layout.css">
+  <link rel="stylesheet" href="css/components.css">
+  <link rel="stylesheet" href="css/shelf.css">
+  <link rel="stylesheet" href="css/grid.css">
+  <link rel="stylesheet" href="css/modal.css">
+</head>
+<body>
+
+<header>
+  <div class="header-left">
+    <h1>La mia libreria</h1>
+    <p>vincenzo ariete · catalogo personale</p>
+  </div>
+  <div class="header-right">
+    <button class="btn" id="btnExport">↓ esporta</button>
+    <button class="btn" id="btnImport">↑ importa</button>
+    <input type="file" id="importFile" accept=".json" style="display:none">
+    <button class="btn primary" id="btnAdd">+ aggiungi</button>
+  </div>
+</header>
+
+<div class="stats-bar">
+  <div class="stat"><span class="stat-number" id="statTotal">0</span><span class="stat-label">totale</span></div>
+  <div class="stat"><span class="stat-number" id="statRead">0</span><span class="stat-label">letti</span></div>
+  <div class="stat"><span class="stat-number" id="statUnread">0</span><span class="stat-label">da leggere</span></div>
+  <div class="stat"><span class="stat-number" id="statThemes">0</span><span class="stat-label">categorie</span></div>
+  <div class="stat"><span class="stat-number" id="statAuthors">0</span><span class="stat-label">autori</span></div>
+</div>
+
+<div class="controls">
+  <div class="search-wrap">
+    <span class="search-icon">⌕</span>
+    <input type="text" id="searchInput" placeholder="cerca titolo o autore...">
+  </div>
+  <div class="control-group">
+    <span class="control-label">stato</span>
+    <button class="filter-btn active" data-status-filter="all">tutti</button>
+    <button class="filter-btn" data-status-filter="read">letti</button>
+    <button class="filter-btn" data-status-filter="unread">da leggere</button>
+  </div>
+  <div class="control-group">
+    <span class="control-label">ordina</span>
+    <select id="sortSelect" class="sort-select">
+      <option value="theme">per categoria</option>
+      <option value="title">titolo A→Z</option>
+      <option value="title_desc">titolo Z→A</option>
+      <option value="author">autore A→Z</option>
+    </select>
+  </div>
+  <div class="control-group author-filter-wrap">
+    <span class="control-label">autore</span>
+    <button class="filter-btn" id="authorFilterBtn">tutti gli autori ▾</button>
+    <div class="author-dropdown" id="authorDropdown"></div>
+  </div>
+  <div class="view-toggle">
+    <button class="view-btn active" data-view="shelf" title="scaffale">⊟</button>
+    <button class="view-btn" data-view="grid" title="griglia">⊞</button>
+  </div>
+</div>
+
+<main class="main" id="mainContent"></main>
+
+<!-- DETAIL MODAL -->
+<div class="modal-overlay" id="detailModal">
+  <div class="modal">
+    <div class="modal-header">
+      <div class="modal-color-bar" id="modalColorBar"></div>
+      <div class="modal-header-text">
+        <div class="modal-title" id="modalTitle"></div>
+        <div class="modal-author" id="modalAuthor"></div>
+      </div>
+      <button class="modal-close" id="btnCloseDetail">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="modal-section">
+        <div class="modal-label">stato</div>
+        <div class="status-toggle">
+          <button class="status-btn" id="btnRead">✓ letto</button>
+          <button class="status-btn" id="btnUnread">○ da leggere</button>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-label">valutazione</div>
+        <div class="rating-wrap">
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+          <span class="star">★</span>
+        </div>
+      </div>
+      <div class="modal-section">
+        <div class="modal-label">note personali</div>
+        <textarea class="modal-textarea" id="modalNotes" placeholder="pensieri, citazioni, riflessioni..."></textarea>
+      </div>
+      <div class="modal-section" id="connectionsSection">
+        <div class="modal-label">connessioni tematiche</div>
+        <div class="connections-list" id="modalConnections"></div>
+      </div>
+    </div>
+    <div class="modal-footer">
+      <button class="delete-btn" id="btnDeleteBook">rimuovi libro</button>
+      <button class="btn primary" id="btnCloseDetail2">chiudi</button>
+    </div>
+  </div>
+</div>
+
+<!-- ADD MODAL -->
+<div class="modal-overlay" id="addModal">
+  <div class="modal add-modal">
+    <div class="modal-header">
+      <div class="modal-header-text">
+        <div class="modal-title">aggiungi libro</div>
+      </div>
+      <button class="modal-close" id="btnCloseAdd">✕</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label class="form-label" for="addTitle">titolo *</label>
+        <input type="text" class="form-input" id="addTitle" placeholder="titolo del libro">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="addAuthor">autore *</label>
+        <input type="text" class="form-input" id="addAuthor" placeholder="nome autore">
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="addTheme">categoria *</label>
+        <select class="form-select" id="addTheme">
+          <option value="">seleziona...</option>
+          <option value="geopolitica">Geopolitica</option>
+          <option value="economia">Economia</option>
+          <option value="filosofia">Filosofia</option>
+          <option value="psicologia">Psicologia</option>
+          <option value="neuroscienze">Neuroscienze</option>
+          <option value="narrativa_classica">Narrativa Classica</option>
+          <option value="narrativa_fantasy">Narrativa Fantasy / SF</option>
+          <option value="narrativa_popolare">Narrativa Popolare</option>
+          <option value="orientale">Scrittori Orientali</option>
+          <option value="design">Design & Visual</option>
+          <option value="informatica">Informatica & Tech</option>
+          <option value="scienze">Scienze</option>
+          <option value="studio">Studio Universitario</option>
+          <option value="storia">Storia</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="addStatus">stato</label>
+        <select class="form-select" id="addStatus">
+          <option value="unread">da leggere</option>
+          <option value="read">letto</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label class="form-label" for="addNotes">note (opzionale)</label>
+        <textarea class="form-input" id="addNotes" style="resize:vertical;min-height:55px" placeholder="note iniziali..."></textarea>
+      </div>
+    </div>
+    <div class="add-modal-footer">
+      <button class="btn" id="btnCancelAdd">annulla</button>
+      <button class="btn primary" id="btnConfirmAdd">aggiungi</button>
+    </div>
+  </div>
+</div>
+
+<script type="module" src="js/main.js"></script>
+</body>
+</html>

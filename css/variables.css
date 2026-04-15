@@ -1,0 +1,38 @@
+:root {
+  --bg:       #0E0F13;
+  --bg2:      #14161C;
+  --bg3:      #1C1F28;
+
+  --gold:      #C4A55A;
+  --gold-dim:  #8A7240;
+  --gold-faint:#C4A55A18;
+
+  --text:     #F0EDE6;
+  --text-sec: #A8A499;
+  --text-ter: #6B6760;
+
+  --red:      #E05A5A;
+  --green:    #5AB88A;
+  --border:   #2A2D38;
+
+  --font-display: 'Playfair Display', serif;
+  --font-body:    'DM Sans', sans-serif;
+  --font-mono:    'DM Mono', monospace;
+
+  --padding-x: 2.5rem;
+
+  --theme-geopolitica:        #C4A55A;
+  --theme-economia:           #5AB88A;
+  --theme-filosofia:          #9B7EC8;
+  --theme-psicologia:         #E07A5A;
+  --theme-neuroscienze:       #5A9EC4;
+  --theme-narrativa_classica: #E0B85A;
+  --theme-narrativa_fantasy:  #7EC89B;
+  --theme-narrativa_popolare: #C4845A;
+  --theme-orientale:          #C45A8A;
+  --theme-design:             #5AC4C0;
+  --theme-informatica:        #7A9EC4;
+  --theme-scienze:            #A4C45A;
+  --theme-studio:             #8A8A8A;
+  --theme-storia:             #C47A5A;
+}
