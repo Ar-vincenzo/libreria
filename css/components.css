@@ -1,0 +1,285 @@
+/* ─── BUTTONS ─────────────────────────────────────────── */
+.btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-sec);
+  padding: 0.4rem 0.9rem;
+  font-family: var(--font-body);
+  font-size: 0.78rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+}
+
+.btn:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+.btn.primary {
+  background: var(--gold);
+  color: var(--bg);
+  border-color: var(--gold);
+  font-weight: 500;
+}
+
+.btn.primary:hover {
+  background: var(--gold-dim);
+  border-color: var(--gold-dim);
+  color: var(--text);
+}
+
+/* ─── FILTER BUTTONS ──────────────────────────────────── */
+.filter-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-ter);
+  padding: 0.3rem 0.7rem;
+  font-size: 0.72rem;
+  font-family: var(--font-mono);
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s, background 0.2s;
+  letter-spacing: 0.03em;
+  white-space: nowrap;
+}
+
+.filter-btn:hover {
+  border-color: var(--text-sec);
+  color: var(--text-sec);
+}
+
+.filter-btn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+  background: var(--gold-faint);
+}
+
+/* ─── VIEW TOGGLE ─────────────────────────────────────── */
+.view-btn {
+  background: transparent;
+  border: 1px solid var(--border);
+  color: var(--text-ter);
+  padding: 0.35rem 0.55rem;
+  cursor: pointer;
+  transition: border-color 0.2s, color 0.2s;
+  font-size: 0.95rem;
+  line-height: 1;
+}
+
+.view-btn.active {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ─── SEARCH ──────────────────────────────────────────── */
+.search-wrap {
+  position: relative;
+  min-width: 180px;
+  max-width: 280px;
+}
+
+.search-wrap input {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.45rem 0.9rem 0.45rem 2rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.2s;
+}
+
+.search-wrap input:focus {
+  border-color: var(--gold-dim);
+}
+
+.search-wrap input::placeholder {
+  color: var(--text-ter);
+}
+
+.search-icon {
+  position: absolute;
+  left: 0.6rem;
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--text-ter);
+  font-size: 0.82rem;
+  pointer-events: none;
+}
+
+/* ─── SORT SELECT ─────────────────────────────────────── */
+.sort-select {
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text-sec);
+  padding: 0.3rem 0.6rem;
+  font-family: var(--font-mono);
+  font-size: 0.72rem;
+  outline: none;
+  cursor: pointer;
+  transition: border-color 0.2s;
+}
+
+.sort-select:focus {
+  border-color: var(--gold-dim);
+}
+
+.sort-select option {
+  background: var(--bg2);
+}
+
+/* ─── AUTHOR DROPDOWN ─────────────────────────────────── */
+.author-filter-wrap {
+  position: relative;
+}
+
+.author-dropdown {
+  position: absolute;
+  top: calc(100% + 2px);
+  left: 0;
+  background: var(--bg2);
+  border: 1px solid var(--border);
+  z-index: 50;
+  min-width: 220px;
+  max-height: 280px;
+  overflow-y: auto;
+  display: none;
+}
+
+.author-dropdown.open {
+  display: block;
+}
+
+.author-item {
+  padding: 0.4rem 0.75rem;
+  font-size: 0.78rem;
+  cursor: pointer;
+  color: var(--text-sec);
+  transition: background 0.15s, color 0.15s;
+  white-space: nowrap;
+}
+
+.author-item:hover {
+  background: var(--bg3);
+  color: var(--text);
+}
+
+.author-item.active {
+  color: var(--gold);
+  background: var(--gold-faint);
+}
+
+/* ─── FORM ELEMENTS ───────────────────────────────────── */
+.form-group {
+  margin-bottom: 0.9rem;
+}
+
+.form-label {
+  font-family: var(--font-mono);
+  font-size: 0.67rem;
+  color: var(--text-ter);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 0.35rem;
+  display: block;
+}
+
+.form-input,
+.form-select {
+  width: 100%;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  color: var(--text);
+  padding: 0.55rem 0.7rem;
+  font-family: var(--font-body);
+  font-size: 0.82rem;
+  outline: none;
+  transition: border-color 0.2s;
+  appearance: none;
+}
+
+.form-input:focus,
+.form-select:focus {
+  border-color: var(--gold-dim);
+}
+
+.form-select option {
+  background: var(--bg2);
+}
+
+/* ─── FILTER "IN LETTURA" ─────────────────────────────── */
+.filter-btn-reading.active {
+  border-color: #5A9EC4;
+  color: #5A9EC4;
+  background: rgba(90, 158, 196, 0.1);
+}
+
+/* ─── STATS SEPARATORE ────────────────────────────────── */
+.stat-sep {
+  border-left: 1px solid var(--border);
+  padding-left: 2rem;
+  margin-left: 0.5rem;
+}
+
+/* ─── READ BADGE ──────────────────────────────────────── */
+.read-badge {
+  font-size: 0.62rem;
+  font-family: var(--font-mono);
+  color: var(--text-ter);
+}
+
+.read-badge.done {
+  color: var(--green);
+}
+
+.read-badge.reading {
+  color: #5A9EC4;
+}
+
+/* ─── GRID SERIES TAG ─────────────────────────────────── */
+.grid-series-tag {
+  display: inline-block;
+  font-size: 0.62rem;
+  font-family: var(--font-mono);
+  color: var(--gold-dim);
+  margin-bottom: 0.3rem;
+  letter-spacing: 0.02em;
+}
+
+/* ─── CONNECTION TAG ──────────────────────────────────── */
+.connection-tag {
+  font-size: 0.68rem;
+  font-family: var(--font-mono);
+  padding: 0.18rem 0.45rem;
+  border: 1px solid var(--border);
+  color: var(--text-sec);
+  cursor: pointer;
+  transition: border-color 0.15s, color 0.15s;
+}
+
+.connection-tag:hover {
+  border-color: var(--gold);
+  color: var(--gold);
+}
+
+/* ─── RATING STARS ────────────────────────────────────── */
+.rating-wrap {
+  display: flex;
+  gap: 0.25rem;
+}
+
+.star {
+  font-size: 1.1rem;
+  cursor: pointer;
+  color: var(--border);
+  transition: color 0.1s;
+  line-height: 1;
+}
+
+.star.filled {
+  color: var(--gold);
+}
+
+.star:hover {
+  color: var(--gold-dim);
+}
